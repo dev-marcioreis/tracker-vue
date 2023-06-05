@@ -1,7 +1,20 @@
-# Vue 3 + Vite
+### Tracker
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+---
 
-## Recommended IDE Setup
+Este será um buscador de animes.
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## 🚀 Em desenvolvimento...
+
+## 📋 Tecnologias
+VueJS + Vite
+
+## ✒️ Autor
+Márcio Reis
+
+😊 Link de acesso: https://dev-marcioreis.github.io/tracker-vue/
+
+---
+![image](https://github.com/dev-marcioreis/tracker-vue/assets/122680054/14f41eeb-13e6-4f82-8f80-2b2854faf65b)
+
+
