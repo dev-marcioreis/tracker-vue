@@ -75,9 +75,45 @@
 
 <template>
 
-  <main class="main">
+  <main>
     <div class="container">
-      <h1>Em desenvolvimento...</h1>
+
+        <div class="anime__top">
+          <h1>encotrando animes</h1>
+          <form @submit.prevent="searchAnime">
+            <input type="text" placeholder="Procurar anime..." v-model="queryAnime" @input="handleInput" class="anime-input">
+            <button type="submit" class="search-btn">procurar</button>
+          </form>
+        </div>
+
+        <div class="results" v-if="searchAnimeResults.length > 0">
+          <div class="result" v-for="(anime, index) in searchAnimeResults" v-bind:key="index">
+            <img :src="anime.images.jpg.image_url" />
+            <div class="details">
+              <h3>{{ anime.title }}</h3>
+              <p :title="anime.synopsis" v-if="anime.synopsis">{{ anime.synopsis.slice(0, 280) }}. . .</p>
+              <span class="flex-1"></span>
+              <button @click="addAnime(anime)">Add na minha lista</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="myanime" v-if="myAnime.length > 0">
+          <h2>Meus animes</h2>
+          <div v-for="(anime, index) in myAnimeAscending" v-bind:key="index" class="anime">
+            <img :src="anime.image" />
+            <h3>{{ anime.title }}</h3>
+            <div class="flex-1"></div>
+            <span class="episodes">{{ anime.watchedEpisodes }} / {{ anime.totalEpisodes }}</span>
+            <button v-if="anime.totalEpisodes !== anime.watchedEpisodes" @click="increaseWatch(anime)">
+              +
+            </button>
+            <button v-if="anime.watchedEpisodes > 0" @click="decreaseWatch(anime)">
+              -
+            </button>
+          </div>
+        </div>
+
     </div>
   </main>
 
@@ -140,6 +176,46 @@
       width: var(--container-lg);
       max-width: var(--container-max-wd);
       margin-inline: auto;  
+    }
+
+  /*==========Anime Container==========*/
+    .anime__top {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3.2rem;
+      background: var(--primary-color);
+      box-shadow: var(--shadow-1);
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+    .anime__top h1 {
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--light-color);
+      text-transform: uppercase;
+      text-shadow: var(--shadow-1);
+    }
+    .anime-input {
+      background: var(--light-color);
+      box-shadow: var(--shadow);
+      padding: .5rem;
+      margin-right: .5rem;
+      border-radius: .5rem;
+    }
+    .search-btn {
+      padding: .5rem;
+      border-radius: .5rem;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      text-transform: capitalize;
+      transition: var(--transition);
+    }
+    .search-btn:hover {
+      color: var(--primary-color);
+      box-shadow: var(--shadow-1);
     }
 
   /*==========Media Query Tablet==========*/
