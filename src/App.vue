@@ -82,7 +82,7 @@
           <h1>encotrando animes</h1>
           <form @submit.prevent="searchAnime">
             <input type="text" placeholder="Procurar anime..." v-model="queryAnime" @input="handleInput" class="anime-input">
-            <button type="submit" class="search-btn">procurar</button>
+            <button type="submit" class="btn">procurar</button>
           </form>
         </div>
 
@@ -92,8 +92,7 @@
             <div class="details">
               <h3>{{ anime.title }}</h3>
               <p :title="anime.synopsis" v-if="anime.synopsis">{{ anime.synopsis.slice(0, 280) }}. . .</p>
-              <span class="flex-1"></span>
-              <button @click="addAnime(anime)">Add na minha lista</button>
+              <button @click="addAnime(anime)" class="btn">Add na minha lista</button>
             </div>
           </div>
         </div>
@@ -146,6 +145,8 @@
       --dark-color: hsl(0, 0%, 13%);
       --black-color: hsl(0, 0%, 0%);
       --light-color: hsl(210, 40%, 96%);
+      --white-color: hsl(0, 0%, 100%);
+      --gradient-color: linear-gradient(90deg, hsl(355, 37%, 88%) 0%, hsl(25, 76%, 90%) 100%);
       
       --transition: all 400ms ease-in-out;
       --shadow: 0px 1px 3px hsla(0, 0%, 0%, 0.5);
@@ -199,29 +200,75 @@
       text-shadow: var(--shadow-1);
     }
     .anime-input {
+      widows: 100%;
       background: var(--light-color);
       box-shadow: var(--shadow);
       padding: .5rem;
       margin-right: .5rem;
-      border-radius: .5rem;
     }
-    .search-btn {
-      padding: .5rem;
-      border-radius: .5rem;
+    .btn {
+      font-weight: 500;
+      padding: .5rem .7rem;
+      background: var(--gradient-color);
+      color: var(--black-color);
+      text-transform: uppercase;
       box-shadow: var(--shadow);
       cursor: pointer;
-      text-transform: capitalize;
       transition: var(--transition);
     }
-    .search-btn:hover {
-      color: var(--primary-color);
+    .btn:hover {
       box-shadow: var(--shadow-1);
+    }
+    .results {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      place-items: center;
+      gap: 1.5rem;
+      padding: .5rem;
+      margin-block-start: 5rem;
+      margin-block-end: 3rem;
+    }
+    .result {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      padding: .5rem;
+      background: var(--white-color);
+      box-shadow: var(--shadow);
+    }
+    .details {
+      margin-block-start: 1rem;
+      padding: .5rem;
+      text-align: center;
+    }
+    .details h3 {
+      margin-block-end: .7rem;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+    .details p {
+      font-size: .9rem;
+      margin-block-end: 1.5rem;
     }
 
   /*==========Media Query Tablet==========*/
     @media (max-width: 992px) {
       .container{
         width: var(--container-md);
+      }
+      .anime__top h1 {
+        font-size: 1.5rem;
+      }
+
+    }
+
+  /*==========Media Query Mobile==========*/
+    @media (max-width: 768px) {
+      .anime__top h1 {
+        display: none;
       }
 
     }
