@@ -290,9 +290,6 @@
       justify-content: center;
       flex-direction: column;
       text-align: center;
-      background: var(--white-color);
-      box-shadow: var(--shadow);
-      padding: .5rem;
       widows: 100%;
       height: 100%;
     }
