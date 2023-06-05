@@ -332,6 +332,10 @@
         display: none;
       }
 
+      .anime__top .btn {
+        display: none;
+      }
+
     }
     
 </style>
